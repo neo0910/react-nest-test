@@ -13,7 +13,7 @@ export const InfluencersHeader = memo<{
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     setValue(event.target.value);
-    debouncedSearch({ query: { name: value } });
+    debouncedSearch({ query: { name: event.target.value } });
   };
 
   return (
