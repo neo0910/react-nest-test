@@ -1,5 +1,5 @@
 import { CampaignStatus, Country } from "../../types";
-import { formatNumber } from "./utils/formatNumber";
+import { formatNumber } from "../../../../utils/formatNumber";
 
 export const CampaignInfo = ({
   countries,
@@ -31,7 +31,7 @@ export const CampaignInfo = ({
         <p className="py-1 px-2 rounded-md bg-white inline-block mr-1 mb-1">
           Followers {">"} {formatNumber(followers)}
         </p>
-        <p className="py-1 px-2 rounded-md bg-white inline-block mr-1 mb-1">
+        <p className="py-1 px-2 rounded-md bg-white inline-block mr-1 mb-1 capitalize">
           Status: {status}
         </p>
       </div>

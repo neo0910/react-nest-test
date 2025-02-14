@@ -11,7 +11,7 @@ export const Footer = () => {
           Contact
         </a>
         <a href="#" className="text-gray-600 hover:text-gray-800">
-          mail@mail.com
+          mail@transistor.com
         </a>
       </div>
     </footer>

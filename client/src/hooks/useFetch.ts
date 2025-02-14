@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
+import { generateQueryString } from "./utils/generateQueryString";
 
 export const useFetch = <T>({
   url,
@@ -8,17 +9,32 @@ export const useFetch = <T>({
   data: null | T;
   error: null | Record<string, unknown>;
   isLoading: boolean;
-  trigger: (options?: { signal?: AbortSignal }) => Promise<void>;
+  trigger: (options?: {
+    query?: Record<string, string>;
+    signal?: AbortSignal;
+  }) => Promise<void>;
 } => {
   const [data, setData] = useState<null | T>(null);
   const [error, setError] = useState<null | Record<string, unknown>>(null);
   const [isLoading, setIsLoading] = useState(true);
 
   const trigger = useCallback(
-    async ({ signal }: { signal?: AbortSignal } = {}) => {
+    async ({
+      query,
+      signal,
+    }: { query?: Record<string, string>; signal?: AbortSignal } = {}) => {
       try {
         setIsLoading(true);
-        const result = (await (await fetch(url, { signal })).json()) as T;
+        const result = await (
+          await fetch(query ? `${url}?${generateQueryString(query)}` : url, {
+            signal,
+          })
+        ).json();
+
+        if (result.statusCode >= 400) {
+          throw result;
+        }
+
         setData(result);
         setError(null);
       } catch (error) {

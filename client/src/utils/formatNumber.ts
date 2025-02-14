@@ -1,4 +1,6 @@
-export const formatNumber = (num: number): string => {
+export const formatNumber = (num?: number): string => {
+  if (typeof num === "undefined") return "0";
+
   if (num < 1000) {
     return num.toString();
   } else if (num < 1000000) {

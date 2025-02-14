@@ -1,4 +1,4 @@
-import { Controller, Get, Param } from '@nestjs/common';
+import { Controller, Get, Param, Query } from '@nestjs/common';
 
 import { InfluencersService } from './influencers.service';
 import { Influencer } from './schemas/influencer.schema';
@@ -8,9 +8,10 @@ export class InfluencersController {
   constructor(private readonly influencersService: InfluencersService) {}
 
   @Get('campaign/:campaignId')
-  async findByCampaign(
+  async searchCampaignInfluencerByName(
     @Param('campaignId') campaignId: string,
+    @Query('name') name?: string,
   ): Promise<Influencer[]> {
-    return this.influencersService.findByCampaign(campaignId);
+    return this.influencersService.findByCampaignAndName(campaignId, name);
   }
 }

@@ -10,6 +10,10 @@ export class CampaignsService {
     @InjectModel(Campaign.name) private campaignModel: Model<Campaign>,
   ) {}
 
+  async findAll(): Promise<Campaign[]> {
+    return await this.campaignModel.find().exec();
+  }
+
   async findById(id: string): Promise<Campaign> {
     const campaign = await this.campaignModel
       .findById(id)

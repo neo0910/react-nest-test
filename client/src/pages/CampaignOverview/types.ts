@@ -26,6 +26,7 @@ export enum Currency {
 }
 
 export type Influencer = {
+  _id: string;
   avatar?: string;
   campaigns?: Campaign[];
   country: Country;
@@ -37,6 +38,7 @@ export type Influencer = {
 };
 
 export type Campaign = {
+  _id: string;
   countries: Country[];
   coupons: number;
   endDate: Date;

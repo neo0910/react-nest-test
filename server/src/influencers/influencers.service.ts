@@ -10,9 +10,12 @@ export class InfluencersService {
     @InjectModel(Influencer.name) private influencerModel: Model<Influencer>,
   ) {}
 
-  async findByCampaign(campaignId: string): Promise<InfluencerDocument[]> {
+  async findByCampaignAndName(
+    campaignId: string,
+    name?: string,
+  ): Promise<InfluencerDocument[]> {
     const influencers = await this.influencerModel
-      .find({ campaigns: campaignId })
+      .find({ campaigns: campaignId, name: { $regex: new RegExp(name, 'i') } })
       .populate('country')
       .exec();
 
