@@ -1,7 +1,7 @@
-export const CampaignHeader = () => {
+export const CampaignHeader = ({ title = "" }: { title?: string }) => {
   return (
     <div className="flex justify-between items-center mb-6">
-      <h1 className="text-2xl font-bold">Summer Ebay affiliates</h1>
+      <h1 className="text-2xl font-bold">{title}</h1>
       <div>
         <button className="bg-gray-200 text-gray-700 px-4 py-2 rounded-md mr-2">
           Cancel

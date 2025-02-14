@@ -88,6 +88,10 @@ async function bootstrap() {
   campaigns[0].influencers = influencers.map(
     ({ _id }) => _id,
   ) as unknown as Influencer[];
+  campaigns[0].followers = influencers.reduce(
+    (acc, cur) => acc + cur.followers,
+    0,
+  );
 
   await Promise.all(campaigns.map((campaign) => campaign.save()));
   console.log('[Campaigns] Update completed!');

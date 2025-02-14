@@ -56,6 +56,9 @@ export class Campaign {
     type: [mongoose.Schema.Types.ObjectId],
   })
   influencers?: Influencer[];
+
+  @Prop({ default: 0 })
+  followers?: number;
 }
 
 export const CampaignSchema = SchemaFactory.createForClass(Campaign);
