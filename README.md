@@ -28,3 +28,8 @@ $ yarn install
 
 $ yarn start
 ```
+
+## Links
+
+- client - [http://localhost:5173](http://localhost:5173/)
+- server - [http://localhost:3000](http://localhost:3000/)
